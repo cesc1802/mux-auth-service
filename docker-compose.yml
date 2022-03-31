@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  mysql-auth-service:
+    image: bitnami/mysql:8.0
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-data:/bitnami/mysql/data
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=auth_service
+      - MYSQL_USER=auth_user
+      - MYSQL_PASSWORD=authpassword
+      - MYSQL_AUTHENTICATION_PLUGIN=mysql_native_password
+volumes:
+  mysql-data:
+    driver: local
